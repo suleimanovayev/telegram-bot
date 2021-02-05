@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users
+(
+    id      INTEGER PRIMARY KEY DEFAULT ,
+    chat_id INTEGER UNIQUE NOT NULL,
+    name    VARCHAR(225)   NOT NULL,
+    surname VARCHAR(225)   NOT NULL
+);
