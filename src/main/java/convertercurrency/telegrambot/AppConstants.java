@@ -5,11 +5,11 @@ public class AppConstants {
     public static final String BANK_HANDLER_DESCRIPTION = "Выберите источник данных:";
     public static final String START_DESCRIPTION = "Добрый день, %s!";
     public static final String DOLLAR_TEXT = "доллар";
-    public static final String DOLLAR_QUERY = "/USD";
+    public static final String DOLLAR_QUERY = "/usd";
     public static final String EURO_TEXT = "евро";
-    public static final String EURO_QUERY = "/EUR";
+    public static final String EURO_QUERY = "/eur";
     public static final String RUBLE_TEXT = "российский рубль";
-    public static final String RUBLE_QUERY = "/RU";
+    public static final String RUBLE_QUERY = "/ru";
     public static final String OSCHAD_BANK_TEXT = "ощад банк";
     public static final String OSCHAD_BANK_QUERY = "/oschad_bank";
     public static final String PRIVAT_BANK_TEXT = "приват банк";
