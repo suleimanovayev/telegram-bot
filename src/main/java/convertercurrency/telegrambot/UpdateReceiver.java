@@ -40,7 +40,7 @@ public class UpdateReceiver {
             MessageHandler messageHandler = (MessageHandler) searchHandler.findHandler(userStateWrapper.getState());
             sendMessage = messageHandler.handleInputMessage(message);
             userStateWrapper.setState(messageHandler.nextState());
-        } else if (hasCallbackQuery(update)) {
+        } else if (update.hasCallbackQuery()) {
             CallbackQuery callbackQuery = update.getCallbackQuery();
             CallBackQueryHandler callBackQueryHandler = (CallBackQueryHandler) searchHandler.findHandler(userStateWrapper.getState());
             sendMessage = callBackQueryHandler.handleCallBackQuery(callbackQuery);
@@ -65,9 +65,5 @@ public class UpdateReceiver {
 
     private boolean hasMessageText(Update update) {
         return update.hasMessage() && update.getMessage().hasText();
-    }
-
-    private boolean hasCallbackQuery(Update update) {
-        return update.hasCallbackQuery() && isEmpty(update.getCallbackQuery().getData());
     }
 }
