@@ -1,4 +1,4 @@
-package convertercurrency.telegrambot.bank;
+package convertercurrency.telegrambot.converter;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,12 +10,12 @@ import java.util.Map;
 import java.util.StringJoiner;
 
 import static convertercurrency.telegrambot.AppConstants.HEADLINE_CURRENCY;
-import static convertercurrency.telegrambot.AppConstants.PRIVAT_BANK_URL;
 
 public class PrivatBank extends BankConverter {
-private static final String BASE_CCY = "base_ccy";
-private static final String CCY = "ccy";
-private static final String UAH = "UAH";
+    public static final String PRIVAT_BANK_URL = "https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5";
+    private static final String BASE_CCY = "base_ccy";
+    private static final String CCY = "ccy";
+    private static final String UAH = "UAH";
 
     @SneakyThrows
     @Override

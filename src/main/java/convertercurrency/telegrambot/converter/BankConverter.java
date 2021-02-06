@@ -1,4 +1,4 @@
-package convertercurrency.telegrambot.bank;
+package convertercurrency.telegrambot.converter;
 
 import org.apache.commons.lang3.StringUtils;
 

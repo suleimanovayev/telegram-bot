@@ -1,4 +1,4 @@
-package convertercurrency.telegrambot.bank;
+package convertercurrency.telegrambot.converter;
 
 import lombok.SneakyThrows;
 import org.jsoup.Jsoup;
@@ -10,10 +10,10 @@ import java.util.Arrays;
 import java.util.StringJoiner;
 
 import static convertercurrency.telegrambot.AppConstants.HEADLINE_CURRENCY;
-import static convertercurrency.telegrambot.AppConstants.OSCHAD_BANK_SELECTOR;
-import static convertercurrency.telegrambot.AppConstants.OSCHAD_BANK_URL;
 
 public class OschadBank extends BankConverter {
+    public static final String OSCHAD_BANK_URL = "https://minfin.com.ua/ua/company/oschadbank/currency/";
+    public static final String OSCHAD_BANK_SELECTOR = ".currency-data tbody >*";
 
     @SneakyThrows
     @Override

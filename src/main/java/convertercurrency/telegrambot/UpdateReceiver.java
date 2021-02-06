@@ -7,7 +7,7 @@ import convertercurrency.telegrambot.mapper.UserMapper;
 import convertercurrency.telegrambot.service.UserService;
 import convertercurrency.telegrambot.util.SearchHandler;
 import convertercurrency.telegrambot.wrapper.UserStateWrapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
@@ -18,21 +18,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static convertercurrency.telegrambot.entity.State.START;
+import static java.util.Objects.isNull;
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 @Component
+@RequiredArgsConstructor
 public class UpdateReceiver {
     private final UserService userService;
     private final SearchHandler searchHandler;
     private final UserStateWrapper userStateWrapper;
     private final UserMapper userMapper;
-
-    @Autowired
-    public UpdateReceiver(UserService userService, SearchHandler searchHandler, UserStateWrapper userStateWrapper, UserMapper userMapper) {
-        this.userService = userService;
-        this.searchHandler = searchHandler;
-        this.userStateWrapper = userStateWrapper;
-        this.userMapper = userMapper;
-    }
 
     public List<BotApiMethod<?>> handle(Update update) {
         List<BotApiMethod<?>> sendMessage = new ArrayList<>();
@@ -45,7 +40,7 @@ public class UpdateReceiver {
             MessageHandler messageHandler = (MessageHandler) searchHandler.findHandler(userStateWrapper.getState());
             sendMessage = messageHandler.handleInputMessage(message);
             userStateWrapper.setState(messageHandler.nextState());
-        } else if (update.hasCallbackQuery()) {
+        } else if (hasCallbackQuery(update)) {
             CallbackQuery callbackQuery = update.getCallbackQuery();
             CallBackQueryHandler callBackQueryHandler = (CallBackQueryHandler) searchHandler.findHandler(userStateWrapper.getState());
             sendMessage = callBackQueryHandler.handleCallBackQuery(callbackQuery);
@@ -55,19 +50,24 @@ public class UpdateReceiver {
     }
 
     private void checkIfStateIsNull() {
-        if (userStateWrapper.getState() == null) {
+        if (isNull(userStateWrapper.getState())) {
             userStateWrapper.setState(START);
         }
     }
 
     private void checkIfUserExist(Message message) {
-        if (userService.findByChatId(message.getChatId()).isEmpty()) {
+        if (isNull(userStateWrapper.getUser())) {
             User user = userMapper.map(message.getFrom());
             userService.saveIfNotExist(user);
+            userStateWrapper.setUser(user);
         }
     }
 
     private boolean hasMessageText(Update update) {
         return update.hasMessage() && update.getMessage().hasText();
+    }
+
+    private boolean hasCallbackQuery(Update update) {
+        return update.hasCallbackQuery() && isEmpty(update.getCallbackQuery().getData());
     }
 }

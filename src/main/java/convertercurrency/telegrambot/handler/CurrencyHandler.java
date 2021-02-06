@@ -67,11 +67,9 @@ public class CurrencyHandler implements MessageHandler, CallBackQueryHandler {
     @Override
     public List<BotApiMethod<?>> handleCallBackQuery(CallbackQuery callbackQuery) {
         String query = callbackQuery.getData();
-        if (query != null) {
-            selectionWrapper.setCurrency(query);
-            nextState = SELECT_BANK;
-            return bankHandler.handleInputMessage(callbackQuery.getMessage());
-        }
-        throw new IllegalArgumentException(String.format("No exist callbackQuery: %s", callbackQuery.toString()));
+
+        selectionWrapper.setCurrency(query);
+        nextState = SELECT_BANK;
+        return bankHandler.handleInputMessage(callbackQuery.getMessage());
     }
 }

@@ -2,6 +2,7 @@ package convertercurrency.telegrambot;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -11,6 +12,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.List;
 
+@Slf4j
 @EnableConfigurationProperties({
         TelegramConfig.class
 })
@@ -44,7 +46,7 @@ public class CurrencyConverterBot extends TelegramLongPollingBot {
         try {
             execute(sendMessage);
         } catch (TelegramApiException e) {
-            e.printStackTrace();
+            log.error(String.format("Cannot execute: %s", sendMessage));
         }
     }
 }

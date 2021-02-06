@@ -2,10 +2,10 @@ package convertercurrency.telegrambot.handler;
 
 import convertercurrency.telegrambot.annotation.HandlerState;
 import convertercurrency.telegrambot.entity.State;
-import convertercurrency.telegrambot.bank.Converter;
-import convertercurrency.telegrambot.bank.Money24;
-import convertercurrency.telegrambot.bank.OschadBank;
-import convertercurrency.telegrambot.bank.PrivatBank;
+import convertercurrency.telegrambot.converter.Converter;
+import convertercurrency.telegrambot.converter.Money24;
+import convertercurrency.telegrambot.converter.OschadBank;
+import convertercurrency.telegrambot.converter.PrivatBank;
 import convertercurrency.telegrambot.util.KeyboardButtonUtil;
 import convertercurrency.telegrambot.util.SendMessageUtil;
 import convertercurrency.telegrambot.wrapper.SelectionWrapper;

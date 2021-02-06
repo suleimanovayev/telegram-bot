@@ -1,8 +1,6 @@
-package convertercurrency.telegrambot.bank;
+package convertercurrency.telegrambot.converter;
 
 import org.springframework.stereotype.Component;
-
-import java.io.IOException;
 
 @Component
 public class Converter {
@@ -12,7 +10,7 @@ public class Converter {
         this.bankConverter = bankConverter;
     }
 
-    public String convertCurrency(String currencyValue) throws IOException {
+    public String convertCurrency(String currencyValue) {
         return bankConverter.convert(currencyValue);
     }
 }

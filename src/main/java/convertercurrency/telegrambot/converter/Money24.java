@@ -1,4 +1,4 @@
-package convertercurrency.telegrambot.bank;
+package convertercurrency.telegrambot.converter;
 
 import lombok.SneakyThrows;
 import org.jsoup.Jsoup;
@@ -9,12 +9,12 @@ import org.jsoup.select.Elements;
 import java.util.StringJoiner;
 
 import static convertercurrency.telegrambot.AppConstants.HEADLINE_CURRENCY;
-import static convertercurrency.telegrambot.AppConstants.MONEY24_SELECTOR;
-import static convertercurrency.telegrambot.AppConstants.MONEY24_URL;
 import static org.apache.commons.lang3.StringUtils.replace;
 
 public class Money24 extends BankConverter {
 
+    public static final String MONEY24_URL = "https://money24.kharkov.ua/";
+    public static final String MONEY24_SELECTOR = "#popup-exchange-table #tab1 >*";
     private final static String DOLLAR = "Американский доллар";
     private final static String EURO = "Евро";
     private final static String RUBLE = "Российский рубль";
