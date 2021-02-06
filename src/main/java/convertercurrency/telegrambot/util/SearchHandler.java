@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 @Component
 @RequiredArgsConstructor
 public class SearchHandler {
-    private final List<Handler> handlers;
+    private final List<? extends Handler> handlers;
 
     public Handler findHandler(State state) {
         return handlers.stream()

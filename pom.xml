@@ -18,6 +18,7 @@
 		<java.version>11</java.version>
 		<mapstruct.version>1.4.1.Final</mapstruct.version>
 		<jsoup.version>1.11.3</jsoup.version>
+		<telegrambots.version>5.0.1</telegrambots.version>
 		<commons.lang3.version>3.11</commons.lang3.version>
 	</properties>
 
@@ -29,7 +30,7 @@
 		<dependency>
 			<groupId>org.telegram</groupId>
 			<artifactId>telegrambots-spring-boot-starter</artifactId>
-			<version>5.0.1</version>
+			<version>${telegrambots.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -86,8 +87,9 @@
 			<version>${commons.lang3.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-log4j2</artifactId>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
