@@ -66,4 +66,5 @@ public class UpdateReceiver {
     private boolean hasMessageText(Update update) {
         return update.hasMessage() && update.getMessage().hasText();
     }
+    //fbeufhaeilvhkavghnw
 }
